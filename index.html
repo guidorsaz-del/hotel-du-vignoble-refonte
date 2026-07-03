@@ -1,0 +1,1715 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hôtel Restaurant du Vignoble – Peseux, Neuchâtel</title>
+  <meta name="description" content="Hôtel Restaurant du Vignoble à Peseux (Neuchâtel). Chambres avec petit-déjeuner, restaurant gastronomique, terrasse. Dès CHF 98.–/nuit.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==============================
+       VARIABLES & RESET
+    ============================== */
+    :root {
+      --vin-bordeaux:   #3B1A2E;
+      --vin-or:         #C9A84C;
+      --vin-creme:      #F5F0E8;
+      --vin-sable:      #E8DFCD;
+      --vin-gris:       #6B6560;
+      --vin-blanc:      #FDFAF5;
+
+      --font-serif: 'Cormorant Garamond', Georgia, serif;
+      --font-sans:  'DM Sans', Helvetica, sans-serif;
+
+      --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+      --transition: 260ms var(--ease-out);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background-color: var(--vin-blanc);
+      color: var(--vin-bordeaux);
+      font-family: var(--font-sans);
+      font-weight: 300;
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* ==============================
+       ANIMATIONS
+    ============================== */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 700ms var(--ease-out), transform 700ms var(--ease-out);
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .fade-in-left {
+      opacity: 0;
+      transform: translateX(-32px);
+      transition: opacity 800ms var(--ease-out), transform 800ms var(--ease-out);
+    }
+
+    .fade-in-left.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .fade-in-right {
+      opacity: 0;
+      transform: translateX(32px);
+      transition: opacity 800ms var(--ease-out), transform 800ms var(--ease-out);
+    }
+
+    .fade-in-right.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .fade-in,
+      .fade-in-left,
+      .fade-in-right {
+        opacity: 1;
+        transform: none;
+        transition: none;
+      }
+    }
+
+    /* ==============================
+       NAVIGATION
+    ============================== */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      background-color: rgba(253, 250, 245, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--vin-sable);
+      padding: 0 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 70px;
+      transition: box-shadow var(--transition);
+    }
+
+    nav.scrolled {
+      box-shadow: 0 2px 20px rgba(59, 26, 46, 0.08);
+    }
+
+    .nav-logo {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--vin-bordeaux);
+      letter-spacing: 0.02em;
+      line-height: 1.2;
+    }
+
+    .nav-logo span {
+      display: block;
+      font-size: 0.65rem;
+      font-family: var(--font-sans);
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--vin-gris);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--vin-bordeaux);
+      position: relative;
+      padding-bottom: 2px;
+      transition: color var(--transition);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background-color: var(--vin-or);
+      transition: width var(--transition);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-cta {
+      background-color: var(--vin-bordeaux);
+      color: var(--vin-creme) !important;
+      padding: 0.55rem 1.4rem !important;
+      letter-spacing: 0.12em;
+      transition: background-color var(--transition) !important;
+    }
+
+    .nav-cta:hover {
+      background-color: var(--vin-or) !important;
+    }
+
+    .nav-cta::after {
+      display: none !important;
+    }
+
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+
+    .nav-burger span {
+      display: block;
+      width: 24px;
+      height: 1.5px;
+      background-color: var(--vin-bordeaux);
+      transition: transform var(--transition), opacity var(--transition);
+    }
+
+    /* ==============================
+       HERO SPLIT (image gauche / texte droite)
+    ============================== */
+    #accueil {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      padding-top: 70px;
+    }
+
+    .hero-image {
+      position: relative;
+      overflow: hidden;
+      min-height: 100%;
+    }
+
+    .hero-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: transform 8s var(--ease-out);
+    }
+
+    .hero-image:hover img {
+      transform: scale(1.04);
+    }
+
+    .hero-image-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(59, 26, 46, 0.18) 0%, transparent 60%);
+    }
+
+    .hero-badge {
+      position: absolute;
+      top: 2rem;
+      left: 2rem;
+      background-color: var(--vin-or);
+      color: var(--vin-bordeaux);
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      padding: 0.4rem 0.9rem;
+    }
+
+    .hero-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 4rem 4rem 4rem 5rem;
+      background-color: var(--vin-blanc);
+    }
+
+    .hero-overline {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--vin-or);
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.8rem, 4vw, 4.5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--vin-bordeaux);
+      margin-bottom: 1.8rem;
+    }
+
+    .hero-title em {
+      font-style: italic;
+      color: var(--vin-or);
+    }
+
+    .hero-description {
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--vin-gris);
+      line-height: 1.8;
+      max-width: 420px;
+      margin-bottom: 3rem;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background-color: var(--vin-bordeaux);
+      color: var(--vin-creme);
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 1rem 2rem;
+      transition: background-color var(--transition), transform var(--transition);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--vin-or);
+      color: var(--vin-bordeaux);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      border: 1px solid var(--vin-bordeaux);
+      color: var(--vin-bordeaux);
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 1rem 2rem;
+      transition: background-color var(--transition), color var(--transition), transform var(--transition);
+    }
+
+    .btn-outline:hover {
+      background-color: var(--vin-bordeaux);
+      color: var(--vin-creme);
+      transform: translateY(-2px);
+    }
+
+    .hero-info-strip {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 3.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--vin-sable);
+    }
+
+    .hero-info-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.2rem;
+    }
+
+    .hero-info-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--vin-gris);
+    }
+
+    .hero-info-value {
+      font-family: var(--font-serif);
+      font-size: 1.1rem;
+      font-weight: 400;
+      color: var(--vin-bordeaux);
+    }
+
+    /* ==============================
+       SECTION SÉPARATEUR OR
+    ============================== */
+    .gold-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 3rem 2rem;
+      background-color: var(--vin-creme);
+    }
+
+    .gold-divider-line {
+      flex: 1;
+      max-width: 120px;
+      height: 1px;
+      background-color: var(--vin-or);
+    }
+
+    .gold-divider-text {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      font-weight: 300;
+      font-style: italic;
+      color: var(--vin-gris);
+      letter-spacing: 0.08em;
+    }
+
+    /* ==============================
+       CHAMBRES
+    ============================== */
+    #chambres {
+      padding: 6rem 2rem;
+      background-color: var(--vin-blanc);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-overline {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--vin-or);
+      margin-bottom: 1rem;
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      font-weight: 300;
+      color: var(--vin-bordeaux);
+      line-height: 1.2;
+    }
+
+    .section-subtitle {
+      margin-top: 1rem;
+      font-size: 1rem;
+      font-weight: 300;
+      color: var(--vin-gris);
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .chambres-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* GALERIE LIGHTBOX */
+    .chambre-card {
+      background-color: var(--vin-blanc);
+      border: 1px solid var(--vin-sable);
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform var(--transition), box-shadow var(--transition);
+    }
+
+    .chambre-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(59, 26, 46, 0.12);
+    }
+
+    .chambre-img-wrap {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+
+    .chambre-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 500ms var(--ease-out);
+    }
+
+    .chambre-card:hover .chambre-img-wrap img {
+      transform: scale(1.06);
+    }
+
+    .chambre-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(59, 26, 46, 0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity var(--transition);
+    }
+
+    .chambre-card:hover .chambre-overlay {
+      opacity: 1;
+    }
+
+    .chambre-overlay-icon {
+      width: 48px;
+      height: 48px;
+      border: 1.5px solid rgba(255,255,255,0.8);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .chambre-overlay-icon svg {
+      width: 20px;
+      height: 20px;
+      color: white;
+    }
+
+    .chambre-info {
+      padding: 1.5rem;
+    }
+
+    .chambre-type {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--vin-bordeaux);
+      margin-bottom: 0.4rem;
+    }
+
+    .chambre-desc {
+      font-size: 0.88rem;
+      color: var(--vin-gris);
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .chambre-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1rem;
+      border-top: 1px solid var(--vin-sable);
+    }
+
+    .chambre-price {
+      font-family: var(--font-serif);
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--vin-bordeaux);
+    }
+
+    .chambre-price-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      color: var(--vin-gris);
+    }
+
+    .chambre-amenities {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .amenity-tag {
+      font-size: 0.65rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--vin-or);
+      background-color: rgba(201, 168, 76, 0.1);
+      padding: 0.25rem 0.6rem;
+      border: 1px solid rgba(201, 168, 76, 0.3);
+    }
+
+    /* LIGHTBOX */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(20, 8, 15, 0.92);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 300ms ease;
+      padding: 2rem;
+    }
+
+    .lightbox.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .lightbox-inner {
+      position: relative;
+      max-width: 900px;
+      width: 100%;
+      background-color: var(--vin-bordeaux);
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      overflow: hidden;
+      transform: scale(0.96);
+      transition: transform 300ms var(--ease-out);
+    }
+
+    .lightbox.open .lightbox-inner {
+      transform: scale(1);
+    }
+
+    .lightbox-img {
+      aspect-ratio: 4/3;
+      overflow: hidden;
+    }
+
+    .lightbox-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .lightbox-details {
+      padding: 2.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      color: var(--vin-creme);
+    }
+
+    .lightbox-overline {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--vin-or);
+      margin-bottom: 0.8rem;
+    }
+
+    .lightbox-title {
+      font-family: var(--font-serif);
+      font-size: 1.8rem;
+      font-weight: 300;
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+    }
+
+    .lightbox-desc {
+      font-size: 0.9rem;
+      font-weight: 300;
+      line-height: 1.7;
+      color: rgba(245, 240, 232, 0.75);
+      flex: 1;
+    }
+
+    .lightbox-price-block {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,0.15);
+    }
+
+    .lightbox-price {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--vin-or);
+    }
+
+    .lightbox-price-note {
+      font-size: 0.75rem;
+      color: rgba(245, 240, 232, 0.6);
+      margin-top: 0.2rem;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: 1px solid rgba(255,255,255,0.3);
+      color: white;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: background-color var(--transition);
+    }
+
+    .lightbox-close:hover {
+      background-color: rgba(255,255,255,0.15);
+    }
+
+    /* ==============================
+       RESTAURANT
+    ============================== */
+    #restaurant {
+      background-color: var(--vin-creme);
+      padding: 6rem 2rem;
+    }
+
+    .restaurant-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5rem;
+      align-items: center;
+    }
+
+    .restaurant-img-col {
+      position: relative;
+    }
+
+    .restaurant-img-main {
+      width: 100%;
+      aspect-ratio: 3/4;
+      object-fit: cover;
+    }
+
+    .restaurant-img-accent {
+      position: absolute;
+      bottom: -2rem;
+      right: -2rem;
+      width: 55%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      border: 5px solid var(--vin-blanc);
+    }
+
+    .restaurant-content {
+      padding: 2rem 0;
+    }
+
+    .price-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+      margin-top: 2rem;
+    }
+
+    .price-card {
+      background-color: var(--vin-blanc);
+      padding: 1.4rem;
+      border-left: 3px solid var(--vin-or);
+    }
+
+    .price-card-title {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      color: var(--vin-bordeaux);
+      margin-bottom: 0.3rem;
+    }
+
+    .price-card-value {
+      font-family: var(--font-serif);
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: var(--vin-or);
+    }
+
+    .price-card-desc {
+      font-size: 0.78rem;
+      color: var(--vin-gris);
+      margin-top: 0.2rem;
+    }
+
+    /* ==============================
+       HORAIRES & SPÉCIALITÉS
+    ============================== */
+    #horaires {
+      background-color: var(--vin-bordeaux);
+      color: var(--vin-creme);
+      padding: 5rem 2rem;
+    }
+
+    .horaires-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .horaires-col .section-overline {
+      color: var(--vin-or);
+    }
+
+    .horaires-col .section-title {
+      color: var(--vin-creme);
+    }
+
+    .horaires-table {
+      margin-top: 2rem;
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .horaires-table tr {
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .horaires-table td {
+      padding: 0.8rem 0;
+      font-size: 0.9rem;
+      font-weight: 300;
+    }
+
+    .horaires-table td:first-child {
+      color: rgba(245, 240, 232, 0.65);
+      width: 55%;
+    }
+
+    .horaires-table td:last-child {
+      color: var(--vin-or);
+      text-align: right;
+    }
+
+    .specialites-list {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+
+    .specialite-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      font-size: 0.9rem;
+      font-weight: 300;
+      color: rgba(245, 240, 232, 0.85);
+    }
+
+    .specialite-item svg {
+      flex-shrink: 0;
+      color: var(--vin-or);
+    }
+
+    /* ==============================
+       CONTACT
+    ============================== */
+    #contact {
+      background-color: var(--vin-blanc);
+      padding: 6rem 2rem;
+    }
+
+    .contact-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .contact-info-list {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .contact-info-item {
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+    }
+
+    .contact-info-icon {
+      width: 40px;
+      height: 40px;
+      background-color: var(--vin-creme);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .contact-info-icon svg {
+      color: var(--vin-bordeaux);
+    }
+
+    .contact-info-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--vin-gris);
+      margin-bottom: 0.2rem;
+    }
+
+    .contact-info-value {
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      color: var(--vin-bordeaux);
+    }
+
+    .contact-info-value a {
+      transition: color var(--transition);
+    }
+
+    .contact-info-value a:hover {
+      color: var(--vin-or);
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+    }
+
+    .form-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--vin-gris);
+    }
+
+    .form-input,
+    .form-textarea {
+      background-color: var(--vin-creme);
+      border: 1px solid var(--vin-sable);
+      color: var(--vin-bordeaux);
+      font-family: var(--font-sans);
+      font-size: 0.9rem;
+      font-weight: 300;
+      padding: 0.9rem 1rem;
+      outline: none;
+      transition: border-color var(--transition);
+      width: 100%;
+    }
+
+    .form-input:focus,
+    .form-textarea:focus {
+      border-color: var(--vin-or);
+    }
+
+    .form-textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
+
+    /* ==============================
+       FOOTER
+    ============================== */
+    footer {
+      background-color: var(--vin-bordeaux);
+      color: rgba(245, 240, 232, 0.65);
+      padding: 3rem 2rem 2rem;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-brand-name {
+      font-family: var(--font-serif);
+      font-size: 1.3rem;
+      font-weight: 400;
+      color: var(--vin-creme);
+      margin-bottom: 0.8rem;
+    }
+
+    .footer-tagline {
+      font-size: 0.85rem;
+      font-weight: 300;
+      line-height: 1.7;
+    }
+
+    .footer-col-title {
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--vin-or);
+      margin-bottom: 1rem;
+    }
+
+    .footer-links {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .footer-links a {
+      font-size: 0.85rem;
+      font-weight: 300;
+      transition: color var(--transition);
+    }
+
+    .footer-links a:hover {
+      color: var(--vin-creme);
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.75rem;
+    }
+
+    /* Mention démo */
+    .demo-badge {
+      position: fixed;
+      bottom: 1rem;
+      left: 1rem;
+      z-index: 50;
+      background-color: rgba(59, 26, 46, 0.85);
+      color: rgba(245, 240, 232, 0.7);
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.08em;
+      padding: 0.4rem 0.8rem;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(201, 168, 76, 0.3);
+    }
+
+    /* ==============================
+       MOBILE NAV
+    ============================== */
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      inset: 0;
+      top: 70px;
+      z-index: 99;
+      background-color: var(--vin-blanc);
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .mobile-menu.open {
+      display: flex;
+    }
+
+    .mobile-menu a {
+      font-family: var(--font-serif);
+      font-size: 2rem;
+      font-weight: 300;
+      color: var(--vin-bordeaux);
+      transition: color var(--transition);
+    }
+
+    .mobile-menu a:hover {
+      color: var(--vin-or);
+    }
+
+    /* ==============================
+       RESPONSIVE
+    ============================== */
+    @media (max-width: 900px) {
+      #accueil {
+        grid-template-columns: 1fr;
+        min-height: auto;
+      }
+
+      .hero-image {
+        min-height: 55vw;
+      }
+
+      .hero-content {
+        padding: 3rem 2rem;
+      }
+
+      .hero-title {
+        font-size: clamp(2.2rem, 7vw, 3rem);
+      }
+
+      .restaurant-inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .restaurant-img-accent {
+        display: none;
+      }
+
+      .horaires-inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .contact-inner {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .lightbox-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .lightbox-img {
+        aspect-ratio: 16/9;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav-burger {
+        display: flex;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 0.5rem;
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .chambres-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .price-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-info-strip {
+        gap: 1.5rem;
+        flex-wrap: wrap;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION FIXE -->
+  <nav id="navbar">
+    <div class="nav-logo">
+      Hôtel du Vignoble
+      <span>Peseux · Neuchâtel</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="#chambres">Chambres</a></li>
+      <li><a href="#restaurant">Restaurant</a></li>
+      <li><a href="#horaires">Horaires</a></li>
+      <li><a href="#contact" class="nav-cta">Réserver</a></li>
+    </ul>
+    <button class="nav-burger" id="navBurger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- MENU MOBILE -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#chambres" onclick="closeMobile()">Chambres</a>
+    <a href="#restaurant" onclick="closeMobile()">Restaurant</a>
+    <a href="#horaires" onclick="closeMobile()">Horaires</a>
+    <a href="#contact" onclick="closeMobile()">Réserver</a>
+  </div>
+
+  <!-- ========================
+       HERO SPLIT
+  ========================= -->
+  <section id="accueil">
+    <div class="hero-image">
+      <img
+        src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200&auto=format&fit=crop&q=80"
+        alt="Vue de l'Hôtel du Vignoble"
+        loading="eager"
+      >
+      <div class="hero-image-overlay"></div>
+      <div class="hero-badge">Depuis Neuchâtel</div>
+    </div>
+
+    <div class="hero-content">
+      <p class="hero-overline fade-in">Hôtel &amp; Restaurant</p>
+      <h1 class="hero-title fade-in">
+        L'art de recevoir<br>
+        au cœur du <em>vignoble</em>
+      </h1>
+      <p class="hero-description fade-in">
+        Niché à Peseux, aux portes de Neuchâtel, l'Hôtel Restaurant du Vignoble vous accueille dans un cadre authentique et chaleureux. Chambres confortables, cuisine généreuse et terrasse ouverte sur le vignoble neuchâtelois.
+      </p>
+      <div class="hero-actions fade-in">
+        <a href="#chambres" class="btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+          Voir les chambres
+        </a>
+        <a href="#restaurant" class="btn-outline">
+          Notre restaurant
+        </a>
+      </div>
+      <div class="hero-info-strip fade-in">
+        <div class="hero-info-item">
+          <span class="hero-info-label">Dès</span>
+          <span class="hero-info-value">CHF 98.–</span>
+        </div>
+        <div class="hero-info-item">
+          <span class="hero-info-label">Petit-déjeuner</span>
+          <span class="hero-info-value">Inclus</span>
+        </div>
+        <div class="hero-info-item">
+          <span class="hero-info-label">Téléphone</span>
+          <span class="hero-info-value">+41 32 731 12 40</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SÉPARATEUR -->
+  <div class="gold-divider">
+    <div class="gold-divider-line"></div>
+    <p class="gold-divider-text">Peseux · Rue du Châtelard 3 · 2034 Neuchâtel</p>
+    <div class="gold-divider-line"></div>
+  </div>
+
+  <!-- ========================
+       CHAMBRES & LIGHTBOX
+  ========================= -->
+  <section id="chambres">
+    <div class="section-header fade-in">
+      <p class="section-overline">Hébergement</p>
+      <h2 class="section-title">Nos chambres &amp; studios</h2>
+      <p class="section-subtitle">Trois formules pour un séjour sur mesure, petit-déjeuner et taxes inclus.</p>
+    </div>
+
+    <div class="chambres-grid">
+
+      <!-- Chambre Double 1 personne -->
+      <article class="chambre-card fade-in" onclick="openLightbox(0)">
+        <div class="chambre-img-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&auto=format&fit=crop&q=80"
+            alt="Chambre double single"
+            loading="lazy"
+          >
+          <div class="chambre-overlay">
+            <div class="chambre-overlay-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="chambre-info">
+          <h3 class="chambre-type">Chambre Double</h3>
+          <p class="chambre-desc">Chambre confortable pour une personne, idéale pour un séjour d'affaires ou une escapade solitaire au cœur du vignoble neuchâtelois.</p>
+          <div class="chambre-footer">
+            <div>
+              <div class="chambre-price">CHF 98.–</div>
+              <div class="chambre-price-label">par nuit · 1 personne</div>
+            </div>
+            <div class="chambre-amenities">
+              <span class="amenity-tag">PDJ inclus</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Chambre Double 2 personnes -->
+      <article class="chambre-card fade-in" onclick="openLightbox(1)">
+        <div class="chambre-img-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=800&auto=format&fit=crop&q=80"
+            alt="Chambre double deux personnes"
+            loading="lazy"
+          >
+          <div class="chambre-overlay">
+            <div class="chambre-overlay-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="chambre-info">
+          <h3 class="chambre-type">Chambre Double</h3>
+          <p class="chambre-desc">Chambre spacieuse et lumineuse pour deux personnes. Parfaite pour un week-end en amoureux ou un séjour en duo dans le canton de Neuchâtel.</p>
+          <div class="chambre-footer">
+            <div>
+              <div class="chambre-price">CHF 136.–</div>
+              <div class="chambre-price-label">par nuit · 2 personnes</div>
+            </div>
+            <div class="chambre-amenities">
+              <span class="amenity-tag">PDJ inclus</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Studio -->
+      <article class="chambre-card fade-in" onclick="openLightbox(2)">
+        <div class="chambre-img-wrap">
+          <img
+            src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=800&auto=format&fit=crop&q=80"
+            alt="Studio jusqu'à 4 personnes"
+            loading="lazy"
+          >
+          <div class="chambre-overlay">
+            <div class="chambre-overlay-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                <line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+        <div class="chambre-info">
+          <h3 class="chambre-type">Studio</h3>
+          <p class="chambre-desc">Idéal pour les familles ou les groupes jusqu'à 4 personnes. Équipé d'une douche, WC, lave-vaisselle et lave-linge pour un séjour en toute autonomie.</p>
+          <div class="chambre-footer">
+            <div>
+              <div class="chambre-price">CHF 175.–</div>
+              <div class="chambre-price-label">par nuit · jusqu'à 4 pers.</div>
+            </div>
+            <div class="chambre-amenities">
+              <span class="amenity-tag">PDJ inclus</span>
+              <span class="amenity-tag">Cuisine</span>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </div>
+
+    <div style="text-align:center; margin-top:3rem;">
+      <a href="#contact" class="btn-primary fade-in">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        Réserver par téléphone
+      </a>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Détail de la chambre">
+    <div class="lightbox-inner">
+      <button class="lightbox-close" id="lightboxClose" aria-label="Fermer">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+      <div class="lightbox-img">
+        <img id="lightboxImg" src="" alt="">
+      </div>
+      <div class="lightbox-details">
+        <div>
+          <p class="lightbox-overline" id="lightboxOverline"></p>
+          <h3 class="lightbox-title" id="lightboxTitle"></h3>
+          <p class="lightbox-desc" id="lightboxDesc"></p>
+        </div>
+        <div class="lightbox-price-block">
+          <div class="lightbox-price" id="lightboxPrice"></div>
+          <p class="lightbox-price-note">Petit-déjeuner et taxes inclus</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================
+       RESTAURANT
+  ========================= -->
+  <section id="restaurant">
+    <div class="restaurant-inner">
+      <div class="restaurant-img-col fade-in-left">
+        <img
+          class="restaurant-img-main"
+          src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=800&auto=format&fit=crop&q=80"
+          alt="Restaurant du Vignoble"
+          loading="lazy"
+        >
+        <img
+          class="restaurant-img-accent"
+          src="https://images.unsplash.com/photo-1510097467424-192d713fd8b2?w=600&auto=format&fit=crop&q=80"
+          alt="Spécialités du restaurant"
+          loading="lazy"
+        >
+      </div>
+
+      <div class="restaurant-content fade-in-right">
+        <p class="section-overline">Table &amp; terrasse</p>
+        <h2 class="section-title">Une cuisine du marché,<br>généreuse et sincère</h2>
+        <p style="margin-top:1.2rem; color:var(--vin-gris); font-weight:300; line-height:1.8;">
+          Notre chef compose chaque saison une carte qui célèbre les produits du terroir : poissons frais, viandes grillées, fondues hivernales, pizzas et pâtes maison. La terrasse ouverte sur le vignoble neuchâtelois invite à prolonger chaque repas.
+        </p>
+
+        <div class="price-grid">
+          <div class="price-card">
+            <div class="price-card-title">Menu 3 services</div>
+            <div class="price-card-value">CHF 39.–</div>
+            <div class="price-card-desc">Entrée, plat, dessert</div>
+          </div>
+          <div class="price-card">
+            <div class="price-card-title">Menu prestige</div>
+            <div class="price-card-value">CHF 72.–</div>
+            <div class="price-card-desc">Menu signature du chef</div>
+          </div>
+          <div class="price-card">
+            <div class="price-card-title">Plats à la carte</div>
+            <div class="price-card-value">CHF 22.–</div>
+            <div class="price-card-desc">Large choix de spécialités</div>
+          </div>
+          <div class="price-card">
+            <div class="price-card-title">Plats carte</div>
+            <div class="price-card-value">à CHF 45.–</div>
+            <div class="price-card-desc">Viandes et poissons nobles</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================
+       HORAIRES
+  ========================= -->
+  <section id="horaires">
+    <div class="horaires-inner">
+      <div class="horaires-col fade-in-left">
+        <p class="section-overline">Horaires d'ouverture</p>
+        <h2 class="section-title">Quand nous<br>retrouver</h2>
+        <table class="horaires-table">
+          <tbody>
+            <tr>
+              <td>Lundi – Vendredi</td>
+              <td>07h00 – 24h00</td>
+            </tr>
+            <tr>
+              <td>Samedi &amp; Dimanche (matin)</td>
+              <td>07h00 – 15h00</td>
+            </tr>
+            <tr>
+              <td>Samedi &amp; Dimanche (soir)</td>
+              <td>18h00 – 24h00</td>
+            </tr>
+            <tr>
+              <td>Fermeture week-end</td>
+              <td>15h00 – 18h00</td>
+            </tr>
+          </tbody>
+        </table>
+        <p style="margin-top:1.5rem; font-size:0.82rem; color:rgba(245,240,232,0.5);">
+          Réservations recommandées pour les groupes et événements.
+        </p>
+      </div>
+
+      <div class="horaires-col fade-in-right">
+        <p class="section-overline">Nos spécialités</p>
+        <h2 class="section-title">Au fil<br>des saisons</h2>
+        <div class="specialites-list">
+          <div class="specialite-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 2a10 10 0 110 20A10 10 0 0112 2z"/><path d="M12 8v4l3 3"/></svg>
+            Spécialités saisonnières du marché
+          </div>
+          <div class="specialite-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3"/></svg>
+            Fondue neuchâteloise (hiver)
+          </div>
+          <div class="specialite-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 11l19-9-9 19-2-8-8-2z"/></svg>
+            Poissons frais du lac
+          </div>
+          <div class="specialite-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg>
+            Pizzas &amp; pâtes maison
+          </div>
+          <div class="specialite-item">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg>
+            Terrasse ouverte sur le vignoble
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================
+       CONTACT
+  ========================= -->
+  <section id="contact">
+    <div class="section-header fade-in">
+      <p class="section-overline">Nous rejoindre</p>
+      <h2 class="section-title">Réservation &amp; contact</h2>
+    </div>
+
+    <div class="contact-inner">
+      <div>
+        <div class="contact-info-list">
+          <div class="contact-info-item fade-in">
+            <div class="contact-info-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            </div>
+            <div>
+              <p class="contact-info-label">Adresse</p>
+              <p class="contact-info-value">Rue du Châtelard 3<br>2034 Peseux, Neuchâtel</p>
+            </div>
+          </div>
+          <div class="contact-info-item fade-in">
+            <div class="contact-info-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            </div>
+            <div>
+              <p class="contact-info-label">Téléphone</p>
+              <p class="contact-info-value"><a href="tel:+41327311240">+41 32 731 12 40</a></p>
+            </div>
+          </div>
+          <div class="contact-info-item fade-in">
+            <div class="contact-info-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            </div>
+            <div>
+              <p class="contact-info-label">E-mail</p>
+              <p class="contact-info-value"><a href="mailto:levignoble@net2000.ch">levignoble@net2000.ch</a></p>
+            </div>
+          </div>
+          <div class="contact-info-item fade-in">
+            <div class="contact-info-icon">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            </div>
+            <div>
+              <p class="contact-info-label">Horaires</p>
+              <p class="contact-info-value">Lun–Ven : 07h00–24h00<br>Sam–Dim : 07h–15h / 18h–24h</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="fade-in-right">
+        <form class="contact-form" onsubmit="return false;">
+          <div class="form-group">
+            <label class="form-label" for="nom">Nom &amp; Prénom</label>
+            <input class="form-input" type="text" id="nom" name="nom" autocomplete="name" placeholder="Marie Dupont">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="email_contact">E-mail</label>
+            <input class="form-input" type="email" id="email_contact" name="email" autocomplete="email" placeholder="marie@exemple.ch">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="sujet">Objet</label>
+            <input class="form-input" type="text" id="sujet" name="sujet" placeholder="Réservation chambre / Table restaurant">
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="message">Message</label>
+            <textarea class="form-textarea" id="message" name="message" placeholder="Vos dates de séjour, nombre de personnes…"></textarea>
+          </div>
+          <button type="submit" class="btn-primary" style="width:100%; justify-content:center;" onclick="this.textContent='Message envoyé ✓'; this.style.backgroundColor='var(--vin-or)'; this.style.color='var(--vin-bordeaux)';">
+            Envoyer ma demande
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================
+       FOOTER
+  ========================= -->
+  <footer>
+    <div class="footer-inner">
+      <div>
+        <div class="footer-brand-name">Hôtel Restaurant du Vignoble</div>
+        <p class="footer-tagline">
+          Rue du Châtelard 3 · 2034 Peseux<br>
+          Une halte authentique au cœur du vignoble neuchâtelois,<br>
+          ouverte du lundi au dimanche pour vous accueillir.
+        </p>
+      </div>
+      <div>
+        <p class="footer-col-title">Navigation</p>
+        <ul class="footer-links">
+          <li><a href="#accueil">Accueil</a></li>
+          <li><a href="#chambres">Chambres</a></li>
+          <li><a href="#restaurant">Restaurant</a></li>
+          <li><a href="#horaires">Horaires</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <p class="footer-col-title">Contact rapide</p>
+        <ul class="footer-links">
+          <li><a href="tel:+41327311240">+41 32 731 12 40</a></li>
+          <li><a href="mailto:levignoble@net2000.ch">levignoble@net2000.ch</a></li>
+          <li style="margin-top:1rem; color:rgba(245,240,232,0.4); font-size:0.8rem;">Lun–Ven : 07h–24h</li>
+          <li style="color:rgba(245,240,232,0.4); font-size:0.8rem;">Sam–Dim : 07h–15h / 18h–24h</li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 Hôtel Restaurant du Vignoble · Peseux, Neuchâtel</span>
+      <span>Rue du Châtelard 3 · +41 32 731 12 40</span>
+    </div>
+  </footer>
+
+  <!-- BADGE DÉMO -->
+  <div class="demo-badge">Site de démonstration réalisé par Horizon IA</div>
+
+  <!-- ========================
+       JAVASCRIPT
+  ========================= -->
+  <script>
+    /* ---- Navigation scroll ---- */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
+
+    /* ---- Burger menu ---- */
+    const burger = document.getElementById('navBurger');
+    const mobileMenu = document.getElementById('mobileMenu');
+    let menuOpen = false;
+
+    burger.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      mobileMenu.classList.toggle('open', menuOpen);
+      burger.setAttribute('aria-expanded', menuOpen);
+    });
+
+    function closeMobile() {
+      menuOpen = false;
+      mobileMenu.classList.remove('open');
+      burger.setAttribute('aria-expanded', false);
+    }
+
+    /* ---- Fade-in IntersectionObserver ---- */
+    const fadeEls = document.querySelectorAll('.fade-in, .fade-in-left, .fade-in-right');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    fadeEls.forEach((el) => observer.observe(el));
+
+    /* ---- Données lightbox ---- */
+    const chambresData = [
+      {
+        img: 'https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=1200&auto=format&fit=crop&q=80',
+        overline: 'Chambre · 1 personne',
+        title: 'Chambre Double Single',
+        desc: 'Une chambre confortable et lumineuse pour un voyageur en solo. Idéale pour les déplacements professionnels ou une pause ressourçante dans le vignoble neuchâtelois. Équipements modernes, literie de qualité et ambiance feutrée.',
+        price: 'CHF 98.–'
+      },
+      {
+        img: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1200&auto=format&fit=crop&q=80',
+        overline: 'Chambre · 2 personnes',
+        title: 'Chambre Double',
+        desc: 'Spacieuse et lumineuse, cette chambre accueille deux personnes dans le plus grand confort. Parfaite pour un week-end romantique ou un séjour en duo. Décoration soignée et atmosphère chaleureuse.',
+        price: 'CHF 136.–'
+      },
+      {
+        img: 'https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1200&auto=format&fit=crop&q=80',
+        overline: 'Studio · Jusqu\'à 4 personnes',
+        title: 'Studio Familial',
+        desc: 'Notre studio est la solution idéale pour les familles ou les petits groupes. Entièrement équipé (douche, WC, lave-vaisselle, lave-linge), il offre toute l\'autonomie nécessaire pour un séjour prolongé dans la région neuchâteloise.',
+        price: 'CHF 175.–'
+      }
+    ];
+
+    /* ---- Lightbox ---- */
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImg');
+    const lightboxOverline = document.getElementById('lightboxOverline');
+    const lightboxTitle = document.getElementById('lightboxTitle');
+    const lightboxDesc = document.getElementById('lightboxDesc');
+    const lightboxPrice = document.getElementById('lightboxPrice');
+    const lightboxClose = document.getElementById('lightboxClose');
+
+    function openLightbox(index) {
+      const data = chambresData[index];
+      lightboxImg.src = data.img;
+      lightboxImg.alt = data.title;
+      lightboxOverline.textContent = data.overline;
+      lightboxTitle.textContent = data.title;
+      lightboxDesc.textContent = data.desc;
+      lightboxPrice.textContent = data.price;
+      lightbox.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      lightbox.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    lightboxClose.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeLightbox();
+    });
+  </script>
+
+</body>
+</html>
